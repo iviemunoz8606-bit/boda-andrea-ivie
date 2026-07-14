@@ -1,25 +1,22 @@
-// Efecto scroll-reveal del collage (mobile) usando IntersectionObserver
 document.addEventListener('DOMContentLoaded', () => {
+  const items = document.querySelectorAll('.collage-item');
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          items.forEach((item, index) => {
+            setTimeout(() => {
+              item.classList.add('visible');
+            }, index * 150); // 150ms de diferencia entre cada celda
+          });
+          observer.disconnect(); // ya se activó, no necesitamos seguir observando
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
   const collage = document.querySelector('.collage');
-
-  if (collage) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            collage.classList.add('visible');
-          }
-          // si quieres que se oculte de nuevo al salir de vista, descomenta:
-          // else {
-          //   collage.classList.remove('visible');
-          // }
-        });
-      },
-      {
-        threshold: 0.2, // se activa cuando el 20% del collage es visible
-      }
-    );
-
-    observer.observe(collage);
-  }
+  if (collage) observer.observe(collage);
 });
