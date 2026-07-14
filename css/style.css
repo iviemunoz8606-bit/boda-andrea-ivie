@@ -22,7 +22,7 @@ h1 {
 }
 
 .collage {
-  width: 40%;
+  width: 60%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 4px;
@@ -52,7 +52,7 @@ h1 {
   position: relative;
   min-height: 100vh;
   background-image: url('../img/fondo-inicio.jpg');
-  background-size: 110%;
+  background-size: 120%;
   background-position: center;
   display: flex;
   align-items: center;
@@ -115,15 +115,26 @@ h1 {
 
   .collage {
   position: absolute;
-  bottom: 15%;
-  right: 5%;
+  bottom: 0%;
+  right: 3%;
   width: 55%;
+  gap: 8px;
   }
 
   .collage-item {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-fondo);
+  color: var(--color-acento);
+  font-family: var(--font-titulos);
+  font-size: 3rem;
+  font-weight: bold;
+  line-height: 1;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   }
 
   .collage-item.visible {
