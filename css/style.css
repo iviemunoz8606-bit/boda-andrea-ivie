@@ -93,7 +93,7 @@ h1 {
 
 .save-the-date {
   font-family: var(--font-script);
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   color: white;
   margin-top: 20px;
 }
@@ -107,6 +107,10 @@ h1 {
     padding: 20px;
   }
 
+  .nombres {
+  font-size: 1.5rem;
+  } 
+
   .inicio-izquierda {
     position: absolute;
     top: 20px;
@@ -115,9 +119,9 @@ h1 {
 
   .collage {
   position: absolute;
-  bottom: -148%;
-  right: 21%;
-  width: 55%;
+  bottom: 6.5%;
+  right: 5%;
+  width: 85%;
   gap: 8px;
   }
 
@@ -142,13 +146,4 @@ h1 {
     transform: translateY(0);
   }
 
-  .collage {
-  position: absolute;
-  bottom: -148%;
-  right: 21%;
-  width: 55%;
-  gap: 8px;
-  border: 5px solid red;
-  background-color: yellow;
-}
 }
