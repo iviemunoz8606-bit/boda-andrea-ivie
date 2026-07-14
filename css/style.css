@@ -55,13 +55,14 @@ h1 {
   position: relative;
   min-height: 100vh;
   background-image: url('../img/fondo-inicio.jpg');
-  background-size: 65%;
-  background-position: 10% center;
+  background-size: 110%;
+  background-position: center;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 40px;
   overflow: hidden;
+  background-repeat: no-repeat;
 }
 
 .nombres {
@@ -98,4 +99,34 @@ h1 {
   font-size: 2.5rem;
   color: white;
   margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  #inicio {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+
+  .inicio-izquierda {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+
+  .collage {
+  position: absolute;
+  bottom: 15%;
+  right: 5%;
+  width: 55%;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .collage.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
