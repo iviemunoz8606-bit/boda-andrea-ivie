@@ -22,10 +22,10 @@ h1 {
 }
 
 .collage {
-  width: 60%;
+  width: 65%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 4px;
+  gap: 2px;
 }
 
 .collage-item {
@@ -52,12 +52,12 @@ h1 {
   position: relative;
   min-height: 100vh;
   background-image: url('../img/fondo-inicio.jpg');
-  background-size: 120%;
+  background-size: 180%;
   background-position: center;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 40px;
+  padding: 20px;
   overflow: hidden;
   background-repeat: no-repeat;
 }
@@ -115,7 +115,7 @@ h1 {
 
   .collage {
   position: absolute;
-  bottom: 0%;
+  bottom: -20%;
   right: 3%;
   width: 55%;
   gap: 8px;
