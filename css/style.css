@@ -1,0 +1,49 @@
+:root {
+  --color-fondo: #E5E0D8;
+  --color-texto: #809671;
+  --color-acento: #71835A;
+  --color-calido: #D2A880;
+  --color-oscuro: #725C3A;
+
+  --font-titulos: 'Antic Didone', serif;
+  --font-texto: 'Pompiere', cursive;
+  --font-script: 'Alex Brush', cursive;
+}
+
+body {
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: var(--font-texto);
+}
+
+h1 {
+  font-family: var(--font-titulos);
+  color: var(--color-acento);
+}
+
+.collage {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+}
+
+.celda {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.celda.foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.celda.numero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-fondo);
+  color: var(--color-acento);
+  font-family: var(--font-titulos);
+  font-size: 3rem;
+}
