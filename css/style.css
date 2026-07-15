@@ -21,6 +21,7 @@ h1 {
   color: var(--color-acento);
 }
 
+/* ===== Collage ===== */
 .collage {
   width: 65%;
   display: grid;
@@ -40,6 +41,9 @@ h1 {
   font-size: 3rem;
   font-weight: bold;
   line-height: 1;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
 }
 
 .collage-item img {
@@ -48,6 +52,12 @@ h1 {
   object-fit: cover;
 }
 
+.collage.visible .collage-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== Sección inicio ===== */
 #inicio {
   position: relative;
   min-height: 100vh;
@@ -89,15 +99,22 @@ h1 {
 .logo-inicio {
   max-width: 100px;
   height: auto;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.logo-inicio.logo-visible {
+  opacity: 1;
 }
 
 .save-the-date {
   font-family: var(--font-script);
   font-size: 1.5rem;
   color: white;
-  margin-top: 10;
+  margin-top: 10px;
 }
 
+/* ===== Efecto de letras escribiéndose ===== */
 .letra-animada {
   display: inline-block;
   opacity: 0;
@@ -112,36 +129,50 @@ h1 {
   }
 }
 
-.logo-inicio {
-  opacity: 0;
-  transition: opacity 1s ease;
-}
-
-.logo-inicio.logo-visible {
-  opacity: 1;
-}
-
+/* ===== Mobile ===== */
 @media (max-width: 768px) {
+
+  @keyframes iluminar {
+    from { filter: brightness(0.4); }
+    to { filter: brightness(1); }
+  }
+
+  @keyframes brillarLogo {
+    0%, 100% {
+      filter:
+        drop-shadow(1px 1px 0 white)
+        drop-shadow(-1px -1px 0 white)
+        drop-shadow(1px -1px 0 white)
+        drop-shadow(-1px 1px 0 white)
+        drop-shadow(0 0 15px rgba(255, 255, 255, 0.8))
+        drop-shadow(0 0 30px rgba(210, 168, 128, 0.6));
+    }
+    50% {
+      filter:
+        drop-shadow(1px 1px 0 white)
+        drop-shadow(-1px -1px 0 white)
+        drop-shadow(1px -1px 0 white)
+        drop-shadow(-1px 1px 0 white)
+        drop-shadow(0 0 25px rgba(255, 255, 255, 1))
+        drop-shadow(0 0 50px rgba(210, 168, 128, 1));
+    }
+  }
+
+  @keyframes brillarTexto {
+    0%, 100% {
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.7), 0 0 30px rgba(255, 255, 255, 0.4);
+    }
+    50% {
+      text-shadow: 0 0 50px rgba(255, 255, 255, 1), 0 0 50px rgba(255, 255, 255, 0.8);
+    }
+  }
+
   #inicio {
-    position: relative;
     background-size: 150%;
     background-position: center;
-    min-height: 100vh;
     padding: 10px;
-    @keyframes iluminar {
-    from {
-      filter: brightness(0.4);
-    }
-    to {
-      filter: brightness(1);
-    }
-  }
-
-  #inicio {
     animation: iluminar 2.5s ease-out;
   }
-  }
-  
 
   .inicio-izquierda {
     position: absolute;
@@ -158,19 +189,17 @@ h1 {
   }
 
   .logo-inicio {
-  max-width: 220px;
-  margin-top: -80px;
-  margin-left: 30px;
-  animation: brillarLogo 3s ease-in-out infinite;
-  }
-
-  @keyframes brillarTexto {
-    0%, 100% {
-      text-shadow: 0 0 15px rgba(255, 255, 255, 0.7), 0 0 30px rgba(255, 255, 255, 0.4);
-    }
-    50% {
-      text-shadow: 0 0 50px rgba(255, 255, 255, 1), 0 0 50px rgba(255, 255, 255, 0.8);
-    }
+    max-width: 200px;
+    margin-top: -80px;
+    margin-left: 30px;
+    animation: brillarLogo 3s ease-in-out infinite;
+    filter:
+      drop-shadow(1px 1px 0 white)
+      drop-shadow(-1px -1px 0 white)
+      drop-shadow(1px -1px 0 white)
+      drop-shadow(-1px 1px 0 white)
+      drop-shadow(0 0 15px rgba(255, 255, 255, 1))
+      drop-shadow(0 0 35px rgba(210, 168, 128, 0.9));
   }
 
   .save-the-date {
@@ -182,48 +211,22 @@ h1 {
     transform-origin: left center;
     animation: brillarTexto 3s ease-in-out infinite;
   }
-  .logo-inicio {
-  max-width: 200px;
-  filter: 
-    drop-shadow(1px 1px 0 white)
-    drop-shadow(-1px -1px 0 white)
-    drop-shadow(1px -1px 0 white)
-    drop-shadow(-1px 1px 0 white)
-    drop-shadow(0 0 15px rgba(255, 255, 255, 1))
-    drop-shadow(0 0 35px rgba(210, 168, 128, 0.9));
-  }
 
   .collage {
-  position: absolute;
-  bottom: 5%;
-  right: 10%;
-  width: 80%;
-  gap: 5px;
+    position: absolute;
+    bottom: 5%;
+    right: 10%;
+    width: 80%;
+    gap: 5px;
   }
 
   .collage-item {
-    aspect-ratio: 1 / 1;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--color-fondo);
-    color: var(--color-acento);
-    font-family: var(--font-titulos);
-    font-size: 3rem;
-    font-weight: bold;
-    line-height: 1;
     border-radius: 4px;
     border: 1px solid rgba(255, 255, 255, 0.6);
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.7), 0 0 16px rgba(210, 168, 128, 0.4);
   }
 
-  .collage-item.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
   .nombres {
-  display: none;
-}
-
+    display: none;
+  }
 }
