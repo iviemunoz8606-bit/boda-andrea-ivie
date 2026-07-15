@@ -233,7 +233,7 @@ h1 {
 
 /* ===== Sección Momentos ===== */
 #momentos {
-  padding: 60px 20px;
+  padding: 20px 20px 60px;
   text-align: center;
 }
 
@@ -241,19 +241,52 @@ h1 {
   font-family: var(--font-titulos);
   color: var(--color-acento);
   font-size: 2rem;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .galeria {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
   max-width: 500px;
   margin: 0 auto;
 }
 
+.numero-fecha {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(113, 131, 90, 0.3);
+  color: var(--color-acento);
+  font-family: var(--font-titulos);
+  font-size: 3rem;
+  font-weight: bold;
+  border-radius: 8px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  animation: brillarNumero 3s ease-in-out infinite;
+}
+
+.numero-fecha.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes brillarNumero {
+  0%, 100% {
+    text-shadow: 0 0 6px rgba(210, 168, 128, 0.4);
+  }
+  50% {
+    text-shadow: 0 0 16px rgba(210, 168, 128, 0.9), 0 0 26px rgba(255, 255, 255, 0.6);
+  }
+}
+
 .tarjeta {
   aspect-ratio: 1 / 1;
+  -webkit-perspective: 1000px;
   perspective: 1000px;
   opacity: 0;
   transform: translateY(30px);
@@ -270,11 +303,13 @@ h1 {
   width: 100%;
   height: 100%;
   transition: transform 0.7s;
+  -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   cursor: pointer;
 }
 
 .tarjeta.volteada .tarjeta-inner {
+  -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
 
@@ -283,6 +318,7 @@ h1 {
   position: absolute;
   width: 100%;
   height: 100%;
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   border-radius: 8px;
   overflow: hidden;
@@ -300,15 +336,18 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
+  -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg);
-  padding: 16px;
+  padding: 12px;
   font-family: var(--font-texto);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
 @media (max-width: 768px) {
   .galeria {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    gap: 6px;
+  }
+  .numero-fecha {
+    font-size: 2.2rem;
   }
 }
