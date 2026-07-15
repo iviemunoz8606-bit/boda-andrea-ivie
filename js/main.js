@@ -30,4 +30,4 @@ setTimeout(() => {
   if (collage) {
     collage.classList.add('visible');
   }
-}, 3000);
+}, 5000);
