@@ -28,3 +28,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 });
+
+setTimeout(() => {
+  const collage = document.querySelector('.collage');
+  if (collage) {
+    collage.classList.add('visible');
+  }
+}, 8000);
