@@ -98,13 +98,36 @@ h1 {
   margin-top: 10;
 }
 
+.letra-animada {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: aparecerLetra 0.5s ease forwards;
+}
+
+@keyframes aparecerLetra {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.logo-inicio {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.logo-inicio.logo-visible {
+  opacity: 1;
+}
+
 @media (max-width: 768px) {
   #inicio {
     position: relative;
-    background-size: cover;
+    background-size: 150%;
     background-position: center;
     min-height: 100vh;
-    padding: 20px;
+    padding: 10px;
     @keyframes iluminar {
     from {
       filter: brightness(0.4);
@@ -135,19 +158,29 @@ h1 {
   }
 
   .logo-inicio {
-    max-width: 220px;
-    margin-top: -80px;
-    animation: brillarLogo 3s ease-in-out infinite;
+  max-width: 220px;
+  margin-top: -80px;
+  margin-left: 30px;
+  animation: brillarLogo 3s ease-in-out infinite;
   }
 
-.save-the-date {
-  font-size: 4rem;
-  margin-top: 0;
-  text-align: left;
-  color: white;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.9), 0 0 40px rgba(255, 255, 255, 0.5);
-  transform: scaleY(1.4);
-  transform-origin: left center;
+  @keyframes brillarTexto {
+    0%, 100% {
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.7), 0 0 30px rgba(255, 255, 255, 0.4);
+    }
+    50% {
+      text-shadow: 0 0 50px rgba(255, 255, 255, 1), 0 0 50px rgba(255, 255, 255, 0.8);
+    }
+  }
+
+  .save-the-date {
+    font-size: 4rem;
+    margin-top: 0;
+    text-align: left;
+    color: white;
+    transform: scaleY(1.4);
+    transform-origin: left center;
+    animation: brillarTexto 3s ease-in-out infinite;
   }
   .logo-inicio {
   max-width: 200px;
@@ -160,13 +193,11 @@ h1 {
     drop-shadow(0 0 35px rgba(210, 168, 128, 0.9));
   }
 
-
-
   .collage {
   position: absolute;
-  bottom: 2.5%;
-  right: 3%;
-  width: 80%;
+  bottom: 3%;
+  right: 2%;
+  width: 78%;
   gap: 8px;
   }
 
