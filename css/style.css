@@ -233,7 +233,7 @@ h1 {
 
 /* ===== Sección Momentos ===== */
 #momentos {
-  padding: 20px 20px 60px;
+  padding: 20px 20px 10px;
   text-align: center;
 }
 
@@ -350,4 +350,93 @@ h1 {
   .numero-fecha {
     font-size: 2.2rem;
   }
+}
+/* ===== Frase de conexión ===== */
+.frase-conexion {
+  font-family: var(--font-script);
+  color: var(--color-acento);
+  font-size: 1.4rem;
+  text-align: center;
+  margin: 10px 0 25px;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.frase-conexion.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== Cuenta regresiva ===== */
+#cuenta-regresiva {
+  padding: 0 20px 50px;
+  text-align: center;
+}
+
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  max-width: 380px;
+  margin: 0 auto 16px;
+}
+
+.countdown-box {
+  background-color: var(--color-acento);
+  color: white;
+  border-radius: 10px;
+  padding: 10px 4px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.countdown-box.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.countdown-box span {
+  display: block;
+  font-family: var(--font-titulos);
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.countdown-box p {
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 2px;
+  opacity: 0.85;
+}
+
+.countdown-botones {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+.btn-calendario {
+  font-family: var(--font-texto);
+  font-size: 0.9rem;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  letter-spacing: 0.5px;
+}
+
+.btn-google {
+  background-color: var(--color-acento);
+  color: white;
+}
+
+.btn-ics {
+  background-color: transparent;
+  color: var(--color-acento);
+  border: 1px solid var(--color-acento);
 }
