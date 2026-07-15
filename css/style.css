@@ -230,3 +230,85 @@ h1 {
     display: none;
   }
 }
+
+/* ===== Sección Momentos ===== */
+#momentos {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.titulo-momentos {
+  font-family: var(--font-titulos);
+  color: var(--color-acento);
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.tarjeta {
+  aspect-ratio: 1 / 1;
+  perspective: 1000px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.tarjeta.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tarjeta-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+.tarjeta.volteada .tarjeta-inner {
+  transform: rotateY(180deg);
+}
+
+.tarjeta-frente,
+.tarjeta-atras {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.tarjeta-frente img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tarjeta-atras {
+  background-color: var(--color-acento);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotateY(180deg);
+  padding: 16px;
+  font-family: var(--font-texto);
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .galeria {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}

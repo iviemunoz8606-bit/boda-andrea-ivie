@@ -31,3 +31,29 @@ setTimeout(() => {
     collage.classList.add('visible');
   }
 }, 5000);
+
+// Voltear tarjetas al tocarlas
+document.querySelectorAll('.tarjeta').forEach((tarjeta) => {
+  tarjeta.addEventListener('click', () => {
+    tarjeta.classList.toggle('volteada');
+  });
+});
+
+// Aparecer en cascada al hacer scroll hasta la sección
+const tarjetas = document.querySelectorAll('.tarjeta');
+const observerGaleria = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        tarjetas.forEach((t, i) => {
+          setTimeout(() => t.classList.add('visible'), i * 150);
+        });
+        observerGaleria.disconnect();
+      }
+    });
+  },
+  { threshold: 0.2 }
+);
+
+const galeria = document.querySelector('.galeria');
+if (galeria) observerGaleria.observe(galeria);
