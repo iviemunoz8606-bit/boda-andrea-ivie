@@ -195,10 +195,10 @@ h1 {
 
   .collage {
   position: absolute;
-  bottom: 5%;
-  right: 2%;
+  bottom: 10%;
+  right: 18%;
   width: 70%;
-  gap: 8px;
+  gap: 5px;
   }
 
   .collage-item {
