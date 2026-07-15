@@ -214,9 +214,9 @@ h1 {
 
   .collage {
     position: absolute;
-    bottom: 3%;
+    bottom: 8%;
     right: 10%;
-    width: 80%;
+    width: 75%;
     gap: 5px;
   }
 
