@@ -1,7 +1,3 @@
-AOS.init({
-  duration: 600,
-  once: true,
-});
 
 document.addEventListener('DOMContentLoaded', () => {
   const el = document.getElementById('save-the-date');
