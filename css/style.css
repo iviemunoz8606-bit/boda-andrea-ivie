@@ -365,7 +365,7 @@ h1 {
 }
 /* ===== Frase de conexión ===== */
 .frase-conexion {
-  font-family: var(--font-script);
+  font-family: var(--font-texto);
   color: var(--color-acento);
   font-size: 1.4rem;
   text-align: center;
