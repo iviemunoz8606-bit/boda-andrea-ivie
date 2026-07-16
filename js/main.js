@@ -219,3 +219,42 @@ document.querySelectorAll('.enredadera').forEach((enredadera) => {
   );
   observerEnredadera.observe(enredadera);
 });
+
+const talloFijo = document.getElementById('tallo-fijo');
+const hojasFijas = document.querySelectorAll('.hoja-fija');
+
+function actualizarEnredadera() {
+  const alturaTotal = document.documentElement.scrollHeight - window.innerHeight;
+  const progreso = Math.min(window.scrollY / alturaTotal, 1);
+
+  if (talloFijo) {
+    talloFijo.style.strokeDashoffset = 100 - progreso * 100;
+  }
+
+  hojasFijas.forEach((hoja) => {
+    const umbral = parseFloat(hoja.dataset.umbral);
+    if (progreso >= umbral) {
+      hoja.classList.add('visible');
+    } else {
+      hoja.classList.remove('visible');
+    }
+  });
+}
+
+window.addEventListener('scroll', actualizarEnredadera);
+actualizarEnredadera();
+
+// ===== Texto de cierre aparece con scroll =====
+const cierreTexto = document.getElementById('cierre-texto');
+const observerCierre = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        cierreTexto.classList.add('visible');
+        observerCierre.disconnect();
+      }
+    });
+  },
+  { threshold: 0.4 }
+);
+if (cierreTexto) observerCierre.observe(cierreTexto);
