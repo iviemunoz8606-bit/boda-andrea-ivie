@@ -180,3 +180,26 @@ document.addEventListener('DOMContentLoaded', () => {
   if (carta) observerCarta.observe(carta);
 
 });
+
+// ===== Botón de WhatsApp (confirmar) =====
+const numeroWhatsApp = '528135740420';
+const mensajeWhatsApp = encodeURIComponent('Hola, quisiera saber la información de la boda de Ivie y Andrea. Mi nombre es...');
+const btnWhatsapp = document.getElementById('btn-whatsapp');
+if (btnWhatsapp) {
+  btnWhatsapp.href = `https://wa.me/${numeroWhatsApp}?text=${mensajeWhatsApp}`;
+}
+
+// ===== Aparece con scroll =====
+const confirmarBox = document.querySelector('.confirmar-box');
+const observerConfirmar = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        confirmarBox.classList.add('visible');
+        observerConfirmar.disconnect();
+      }
+    });
+  },
+  { threshold: 0.3 }
+);
+if (confirmarBox) observerConfirmar.observe(confirmarBox);
