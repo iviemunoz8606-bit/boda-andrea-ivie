@@ -258,3 +258,39 @@ const observerCierre = new IntersectionObserver(
   { threshold: 0.4 }
 );
 if (cierreTexto) observerCierre.observe(cierreTexto);
+
+// ===== Pista para indicar que las fotos se pueden tocar =====
+const hintToca = document.getElementById('hint-toca');
+
+const observerHint = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        hintToca.classList.add('visible');
+
+        // Demo: la primera foto se voltea sola para enseñar la interacción
+        setTimeout(() => {
+          const primeraTarjeta = document.querySelector('.tarjeta');
+          if (primeraTarjeta) {
+            primeraTarjeta.classList.add('volteada');
+            setTimeout(() => primeraTarjeta.classList.remove('volteada'), 1200);
+          }
+        }, 1300);
+
+        // La pista se desvanece sola después de un rato
+        setTimeout(() => hintToca.classList.add('oculto'), 4500);
+
+        observerHint.disconnect();
+      }
+    });
+  },
+  { threshold: 0.3 }
+);
+if (hintToca) observerHint.observe(hintToca);
+
+// Si el usuario toca cualquier tarjeta, ocultamos la pista de inmediato
+document.querySelectorAll('.tarjeta').forEach((tarjeta) => {
+  tarjeta.addEventListener('click', () => {
+    if (hintToca) hintToca.classList.add('oculto');
+  });
+});

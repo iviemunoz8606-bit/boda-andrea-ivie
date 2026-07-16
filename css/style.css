@@ -739,3 +739,29 @@ h1 {
   font-size: 2.2rem;
   margin-top: 6px;
 }
+
+.hint-toca {
+  font-family: var(--font-texto);
+  font-size: 0.85rem;
+  color: var(--color-acento);
+  text-align: center;
+  margin-bottom: 15px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.hint-toca.visible {
+  opacity: 1;
+  transform: translateY(0);
+  animation: rebotarMano 1.2s ease-in-out 2;
+}
+
+.hint-toca.oculto {
+  opacity: 0;
+}
+
+@keyframes rebotarMano {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
