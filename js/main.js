@@ -203,3 +203,19 @@ const observerConfirmar = new IntersectionObserver(
   { threshold: 0.3 }
 );
 if (confirmarBox) observerConfirmar.observe(confirmarBox);
+
+// ===== Enredaderas decorativas al hacer scroll =====
+document.querySelectorAll('.enredadera').forEach((enredadera) => {
+  const observerEnredadera = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          enredadera.classList.add('crecer');
+          observerEnredadera.disconnect();
+        }
+      });
+    },
+    { threshold: 0.4 }
+  );
+  observerEnredadera.observe(enredadera);
+});
